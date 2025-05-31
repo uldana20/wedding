@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>Тойға шақырту</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      color: #fff;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 50px 20px;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #ffd5d5;
+    }
+    h2 {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+    #countdown {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .button {
+      display: inline-block;
+      background-color: #fff;
+      color: #000;
+      padding: 10px 25px;
+      margin: 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Тойға шақырту</h1>
+    <h2>Улдан & Тимур</h2>
+    <div id="countdown">Жүктелуде...</div>
+
+    <p><strong>📅 20 шілде 2025</strong> — <strong>18:00</strong></p>
+    <p>🏛 Алматы қаласы, Royal Hall</p>
+
+    <a class="button" href="https://maps.app.goo.gl/x7dF6HpnZoK3M98K9" target="_blank">📍 Қалай жетуге болады</a>
+    <a class="button" href="https://wa.me/77000000000?text=Құттықтаймын!%20❤️" target="_blank">💌 Құттықтау</a>
+
+    <audio autoplay loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-07-20T18:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerText = "Біз үйлендік!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.innerText = ${days} күн ${hours} сағ ${minutes} мин ${seconds} сек;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
